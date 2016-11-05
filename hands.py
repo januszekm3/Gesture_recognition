@@ -3,7 +3,7 @@ import cv2
 
 cap = cv2.VideoCapture(0)
 
-types = 'positive'
+gesture_type = 'v'
 counter = 0
 path = 'photos/%s/%03d.png'
 size = (36, 36)
@@ -19,14 +19,11 @@ def resize(frame):
 while True:
     ret, frame = cap.read()
     cv2.imshow("webcam", frame)
-    skip -= 1
-    if skip == 0:
-        skip = 5
-        frame = cv2.resize(frame, size)
-        frames = resize(frame)
-        for f in frames:
-            cv2.imwrite(path % (types, counter), f)
-            counter += 1
     k = cv2.waitKey(30)
     if k == 27:
-      break
+        break
+    elif k == ord(' '):
+        # frame = cv2.resize(frame, size)
+        # frames = resize(frame)
+        cv2.imwrite(path % (gesture_type, counter), frame)
+        counter += 1
