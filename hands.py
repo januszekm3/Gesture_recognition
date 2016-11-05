@@ -6,7 +6,7 @@ cap = cv2.VideoCapture(0)
 types = 'positive'
 counter = 0
 path = 'photos/%s/%03d.png'
-size = (32, 32)
+size = (36, 36)
 skip = 5
 
 def resize(frame):
